@@ -1,0 +1,2 @@
+Fabricator(:plan) do
+end
