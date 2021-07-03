@@ -1,0 +1,2 @@
+Fabricator(:site) do
+end
