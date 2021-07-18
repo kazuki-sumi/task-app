@@ -32,6 +32,7 @@ gem "dotenv-rails"
 gem 'activerecord-import'
 gem "kaminari"
 gem 'sidekiq'
+gem 'parallel'
 
 
 group :development, :test do

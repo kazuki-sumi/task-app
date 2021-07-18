@@ -314,6 +314,7 @@ DEPENDENCIES
   kaminari
   listen
   mysql2
+  parallel
   puma
   rails (~> 6.1.3.2)
   redis
