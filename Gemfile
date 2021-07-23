@@ -33,6 +33,7 @@ gem 'activerecord-import'
 gem "kaminari"
 gem 'sidekiq'
 gem 'parallel'
+gem "unicorn"
 
 
 group :development, :test do
