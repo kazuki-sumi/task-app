@@ -50,7 +50,6 @@ class CreateProjects < ActiveRecord::Migration[6.1]
     create_table :payments do |t|
       t.integer :status
       t.integer :amount
-      t.integer :
       t.timestamps
     end
 
