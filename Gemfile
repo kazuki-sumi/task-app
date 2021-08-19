@@ -34,7 +34,7 @@ gem "kaminari"
 gem 'sidekiq'
 gem 'parallel'
 gem "unicorn"
-
+gem "graphql"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -53,11 +53,13 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen'
 
-    # rubocop
+  # rubocop
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+
+  gem 'graphiql-rails'
 end
 
 group :test do
