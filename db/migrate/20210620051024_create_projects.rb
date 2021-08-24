@@ -1,6 +1,15 @@
 class CreateProjects < ActiveRecord::Migration[6.1]
   def change
+    # TODO: サブドメインについてちゃんと調べる
+    create_table :sites do |t|
+      t.string :url
+      t.timestamps
+    end
+
     create_table :projects do |t|
+      t.references :site, foreign_key: true, null: false
+      t.string :title, null: false
+      t.string :key, null: false
       t.timestamps
     end
 
@@ -9,6 +18,14 @@ class CreateProjects < ActiveRecord::Migration[6.1]
     end
 
     create_table :tasks do |t|
+      t.string :title
+      t.references :project, foreign_key: true
+      t.timestamps
+    end
+
+    create_table :task_sub_tasks do |t|
+      t.references :task, null: false, foreign_key: true
+      t.references :sub_task, null: false, foreign_key: { to_table: :tasks }
       t.timestamps
     end
 
@@ -50,12 +67,6 @@ class CreateProjects < ActiveRecord::Migration[6.1]
     create_table :payments do |t|
       t.integer :status
       t.integer :amount
-      t.timestamps
-    end
-
-    # TODO: サブドメインについてちゃんと調べる
-    create_table :sites do |t|
-      t.string :url
       t.timestamps
     end
   end

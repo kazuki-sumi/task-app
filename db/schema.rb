@@ -39,8 +39,12 @@ ActiveRecord::Schema.define(version: 2021_06_20_051024) do
   end
 
   create_table "projects", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "site_id", null: false
+    t.string "title", null: false
+    t.string "key", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["site_id"], name: "index_projects_on_site_id"
   end
 
   create_table "sites", charset: "utf8mb4", force: :cascade do |t|
@@ -54,9 +58,21 @@ ActiveRecord::Schema.define(version: 2021_06_20_051024) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tasks", charset: "utf8mb4", force: :cascade do |t|
+  create_table "task_sub_tasks", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "sub_task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["sub_task_id"], name: "index_task_sub_tasks_on_sub_task_id"
+    t.index ["task_id"], name: "index_task_sub_tasks_on_task_id"
+  end
+
+  create_table "tasks", charset: "utf8mb4", force: :cascade do |t|
+    t.string "title"
+    t.bigint "project_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
   create_table "teams", charset: "utf8mb4", force: :cascade do |t|
@@ -79,4 +95,8 @@ ActiveRecord::Schema.define(version: 2021_06_20_051024) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "projects", "sites"
+  add_foreign_key "task_sub_tasks", "tasks"
+  add_foreign_key "task_sub_tasks", "tasks", column: "sub_task_id"
+  add_foreign_key "tasks", "projects"
 end
