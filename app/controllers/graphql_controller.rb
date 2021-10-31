@@ -14,9 +14,10 @@ class GraphqlController < ApplicationController
     }
     result = TaskAppSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
-  rescue StandardError => e
+  rescue => e
     raise e unless Rails.env.development?
-    handle_error_in_development(e)
+
+    handle_error_in_development e
   end
 
   private
@@ -41,10 +42,10 @@ class GraphqlController < ApplicationController
     end
   end
 
-  def handle_error_in_development(e)
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+  def handle_error_in_development(exception)
+    logger.error exception.message
+    logger.error exception.backtrace.join("\n")
 
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
+    render json: { errors: [{ message: exception.message, backtrace: exception.backtrace }], data: {} }, status: 500
   end
 end
