@@ -14,7 +14,7 @@ class Admin::ArticlesController < Admin::ApplicationController
   def create
     @article = Article.new(form_params)
     if @article.save
-      redirect_to :admin_articles_path
+      redirect_to admin_articles_path
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::ArticlesController < Admin::ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update(form_params)
-      redirect_to :admin_articles_path
+      redirect_to admin_articles_path
     else
       render :edit
     end
@@ -42,6 +42,6 @@ class Admin::ArticlesController < Admin::ApplicationController
   private
 
   def form_params
-    params.require(:form).permit(:title, :content, :published_at, :important, :status)
+    params.require(:article).permit(:title, :content, :published_at, :important, :status)
   end
 end

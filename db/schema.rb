@@ -13,22 +13,19 @@
 ActiveRecord::Schema.define(version: 2021_06_20_051024) do
 
   create_table "article_files", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "slug", null: false
-    t.string "file_url", null: false
-    t.integer "file_type", null: false
-    t.json "data"
-    t.integer "file_size", null: false
+    t.string "title", null: false
+    t.string "file", null: false
+    t.integer "content_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["file_type"], name: "index_article_files_on_file_type"
   end
 
   create_table "articles", charset: "utf8mb4", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
-    t.datetime "released_at"
-    t.integer "status", limit: 1, default: 0, null: false
+    t.datetime "published_at"
+    t.integer "status", limit: 1, default: 1, null: false
+    t.boolean "important", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

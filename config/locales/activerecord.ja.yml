@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      article:
+        id: ID
+        title: タイトル
+        content: 本文
+        status: 公開ステータス
+        published_at: 公開日時
+        important: 重要マーク

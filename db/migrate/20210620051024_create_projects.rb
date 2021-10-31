@@ -1,21 +1,18 @@
 class CreateProjects < ActiveRecord::Migration[6.1]
   def change
     create_table :article_files do |t|
-      t.string :name, null: false, limit: 255
-      t.string :slug, null: false, limit: 255
-      t.string :file_url, null: false
-      t.integer :file_type, null: false
-      t.json :data
-      t.integer :file_size, null: false
+      t.string :title, null: false
+      t.string :file, null: false
+      t.integer :content_type, null: false
       t.timestamps
-      t.index ["file_type"]
     end
 
     create_table :articles do |t|
-      t.string :title, null: false, limit: 255
+      t.string :title, null: false
       t.text :content, null: false
-      t.datetime :released_at
-      t.integer :status, null: false, limit: 1, default: 0
+      t.datetime :published_at
+      t.integer :status, null: false, limit: 1, default: 1
+      t.boolean :important, default: false, null: false
       t.timestamps
     end
 
