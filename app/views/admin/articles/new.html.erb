@@ -1,3 +1,5 @@
+<% @error_messages = @article.errors.full_messages %>
+
 <div class="card">
   <div class="card-body">
     <%= render "form", article: @article %>

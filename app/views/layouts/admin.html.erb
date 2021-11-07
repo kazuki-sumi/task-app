@@ -21,10 +21,11 @@
         <div class="col-md-9">
           <div class="c-body">
             <main class="c-main">
-              <% flash.each do |type, message| %>
-                <%= content_tag(:div, message, class: "alert alert-#{type} col-md-8") %>
-              <% end %>
+              <%= render "shared/error_messages", error_messages: @error_messages %>
+              <%= render "shared/flash" %>
+
               <%= yield %>
+
             </main>
           </div>
         </div>

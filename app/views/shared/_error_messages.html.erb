@@ -1,0 +1,7 @@
+<% if error_messages.is_a?(Array) && error_messages.present? %>
+  <div class="alert alert-danger font-weight-bold" role="alert">
+    <% error_messages.each do |error_message| %>
+      <%= error_message %><br>
+    <% end %>
+  </div>
+<% end %>
