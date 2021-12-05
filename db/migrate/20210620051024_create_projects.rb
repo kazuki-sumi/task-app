@@ -1,9 +1,9 @@
 class CreateProjects < ActiveRecord::Migration[6.1]
   def change
     create_table :article_files do |t|
-      t.string :title, null: false
+      t.string :name, null: false
       t.string :file, null: false
-      t.integer :content_type, null: false
+      t.string :content_type, null: false
       t.timestamps
     end
 

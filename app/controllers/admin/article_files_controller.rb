@@ -12,24 +12,11 @@ class Admin::ArticleFilesController < Admin::ApplicationController
   end
 
   def create
-    @article_file = ArticleFile.new(create_params)
-    if @article_file.save!
-      redirect_to admin_article_files_path, flash: "ファイルを作成しました。"
+    @article_file = ArticleFile.new(upload_file_params)
+    if @article_file.save
+      redirect_to admin_article_files_path, notice: "ファイルを作成しました。"
     else
       render :new
-    end
-  end
-
-  def edit
-    @article_file = ArticleFile.find(params[:id])
-  end
-
-  def update
-    @article_file = ArticleFile.find(params[:id])
-    if @article_file.update!(update_params)
-      redirect_to admin_article_files_path, flash: "ファイルを更新しました。"
-    else
-      render :edit
     end
   end
 
@@ -40,4 +27,13 @@ class Admin::ArticleFilesController < Admin::ApplicationController
   end
 
   private
+
+  def upload_file_params
+    file = params[:article_file][:file]
+    {
+      name: file.original_filename,
+      content_type: file.content_type,
+      file: file
+    }
+  end
 end

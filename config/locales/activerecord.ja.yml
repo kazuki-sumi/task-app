@@ -8,3 +8,6 @@ ja:
         status: 公開ステータス
         published_at: 公開日時
         important: 重要マーク
+      article_file:
+        name: ファイル名
+        content_type: ファイルのタイプ

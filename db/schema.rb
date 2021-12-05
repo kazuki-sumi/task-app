@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 2021_06_20_051024) do
 
   create_table "article_files", charset: "utf8mb4", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "name", null: false
     t.string "file", null: false
-    t.integer "content_type", null: false
+    t.string "content_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
