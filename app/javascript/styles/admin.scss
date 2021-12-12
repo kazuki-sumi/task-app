@@ -1,2 +1,4 @@
-@import "bootstrap";
-@import "admin_sidebar"
+@import "./custom";
+@import "~@coreui/coreui/scss/coreui";
+@import "~@coreui/icons/css/free.min";
+@import "admin_sidebar";

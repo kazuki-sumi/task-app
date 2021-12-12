@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('bootstrap/dist/js/bootstrap.min.js')
+require("@coreui/coreui")
 
 import "bootstrap"
 import "../styles/admin.scss"
