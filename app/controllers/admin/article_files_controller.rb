@@ -23,7 +23,7 @@ class Admin::ArticleFilesController < Admin::ApplicationController
   def destroy
     @article_file = ArticleFile.find(params[:id])
     @article_file.destroy!
-    redirect_to admin_article_files_path, flash: "ファイルを削除しました。"
+    redirect_to admin_article_files_path, alert: "ファイルを削除しました。"
   end
 
   private
