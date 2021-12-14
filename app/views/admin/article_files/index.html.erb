@@ -18,8 +18,7 @@
             As Uber works through a huge amount of internal management turmoil.
           </p>
           <div class="ms-auto text-end">
-            <% #TODO: link_toを使って修正 %>
-            <%= button_to admin_article_file_path(article_file), method: :delete, data: { confirm: "このファイルを削除します。よろしいですか？" }, class: "btn btn-danger px-3 mb-0" do %>
+            <%= link_to admin_article_file_path(article_file), method: :delete, data: { confirm: "このファイルを削除します。よろしいですか？" }, class: "btn btn-danger px-3 mb-0" do %>
               <i class="cil-trash text-sm me-2">削除</i>
             <% end %>
           </div>
